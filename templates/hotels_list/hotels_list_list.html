@@ -1,0 +1,6 @@
+{% for hotel in hotels_list %}
+<h2><a href="{% url 'hotel_list_single' pk=hotel.id%}">{{hotel.hotel|safe}}</a> </h2>
+<p>{{hotel.description|safe}}</p>
+<p>{{hotel.type|safe }}</p>
+<p>{{hotel.facilities|safe }}</p>
+{% endfor %}

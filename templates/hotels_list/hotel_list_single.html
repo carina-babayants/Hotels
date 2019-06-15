@@ -1,0 +1,23 @@
+{% extends 'hotels_list/base.html'%}
+{%block desc%}{{hotel.description}}{%endblock desc%}
+{% block hotel %}{{hotel.hotel|safe}}{% endblock hotel %}
+
+{% block content%}
+    <h1>{{ hotel_list.hotel|safe}}</h1>
+    <p>{{hotel_list.address|safe}}</p><hr>
+    <p>{{ hotel_list.description|safe}}</p><br>
+
+    Тип номера:<p>{{ hotel_list.type|safe}}</p>
+    Вместимость:<p>{{ hotel_list.capacity|safe}}</p>
+    Удобства:<p>{{ hotel_list.facilities|safe}}</p>
+    {%for comment in comments%}
+        Пользователь - {{comment.user}}<br>
+        {{comment.text}}<br>
+        Добавлен: {{comment.created}}
+    {%endfor%}
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock content%}
